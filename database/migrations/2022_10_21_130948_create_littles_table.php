@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('littles', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->text('text');
+            $table->foreignId('auteur_id')->constrained();
+            $table->string('image');
             $table->timestamps();
         });
     }

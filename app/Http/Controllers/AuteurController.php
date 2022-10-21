@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Auteur;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuteurController extends Controller
 {
@@ -14,7 +15,8 @@ class AuteurController extends Controller
      */
     public function index()
     {
-        //
+        $auteurs = Auteur::all();
+        return view('welcome', compact('auteurs'));
     }
 
     /**
@@ -24,7 +26,8 @@ class AuteurController extends Controller
      */
     public function create()
     {
-        //
+        $auteurs = Auteur::all();
+        return view('welcome', compact('auteurs'));
     }
 
     /**
@@ -35,7 +38,13 @@ class AuteurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=>'required'
+        ]);
+        $store= new Auteur();
+        $store->name=$request->name;
+        $store->save();
+        return redirect('/');
     }
 
     /**
@@ -46,7 +55,7 @@ class AuteurController extends Controller
      */
     public function show(Auteur $auteur)
     {
-        //
+        return view('pages.auteur.show', compact('auteur'));
     }
 
     /**

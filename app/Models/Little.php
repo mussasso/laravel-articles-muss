@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Little extends Model
 {
     use HasFactory;
+    public function auteur()
+    {
+        return $this->belongsTo(Auteur::class);
+    }
 }

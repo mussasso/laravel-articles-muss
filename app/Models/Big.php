@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Big extends Model
 {
     use HasFactory;
+    public function auteur()
+    {
+        return $this->belongsTo(Auteur::class);
+    }
 }
