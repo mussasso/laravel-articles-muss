@@ -7,4 +7,31 @@ body{
     width: 100vw;
     background-repeat: inherit;
     background-size: 100%;
+    opacity: O.4;
+}
+.navOne{
+    background-color: #ffffff;
+    width: 30%;
+    margin: 20px auto;
+    border-radius: 20px;
+    line-height: 3rem;
+    border: none;
+    
+}
+.navTwo{
+    display: flex;
+    justify-content: center;
+    gap: 5em;
+    list-style: none;
+    font-weight: 500;
+}
+.navThree:hover{
+    background-color: lightblue;
+    border-radius: 20px;
+    width: 120px;
+    line-height: 3rem;
+    
+}
+.test{
+    background-color: red;
 }
