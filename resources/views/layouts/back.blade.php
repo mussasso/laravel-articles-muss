@@ -8,7 +8,6 @@
     <title>articles</title>
 </head>
 <body>
-    @include('partials.nav.nav')
     @yield('content')
 </body>
 </html>

@@ -25,6 +25,12 @@ Route::get('/', function () {
     $auteurs= Auteur::all();
     return view('welcome' , compact('littles','bigs', 'auteurs'));
 });
+Route::get('/backoffice', function () {
+    $littles= Little::all();
+    $bigs= Big::all();
+    $auteurs= Auteur::all();
+    return view('pages.backoffice' , compact('littles','bigs', 'auteurs'));
+});
 Route::resource('/auteur', AuteurController::class);
 Route::resource('/big', BigController::class);
 Route::resource('/little', LittleController::class);

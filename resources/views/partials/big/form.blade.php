@@ -11,12 +11,13 @@
             </div>
 
             <div>
-                <label class="text-gray-700 dark:text-gray-200" for="emailAddress">text</label>
-                <input id="emailAddress" type="textarea" name="text" value="{{old('text')}}" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                <label class="text-gray-700 dark:text-gray-200" for="emailAddress">Text</label>
+                <textarea type="area" name="text" value="{{old('text')}}" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                </textarea>
             </div>
 
             <div>
-                <label class="text-gray-700 dark:text-gray-200" for="password">Password</label>
+                <label class="text-gray-700 dark:text-gray-200" for="password">Auteur de l'article</label>
                 <select name="auteur_id">
                     @foreach ($auteurs as $auteur)
                         <option value="{{$auteur->id}}">{{$auteur->name}}</option>
@@ -25,7 +26,7 @@
             </div>
 
             <div>
-                <label class="text-gray-700 dark:text-gray-200" for="passwordConfirmation">Image</label>
+                <label class="text-gray-700 dark:text-gray-200">Image</label>
                 <input  type="file" name="image" value="{{old('image')}}" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
             </div>
         </div>
