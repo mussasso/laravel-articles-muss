@@ -46,11 +46,11 @@ class BigController extends Controller
             'image'=>'required',
         ]);
         $store = new Big();
-        Storage::put('public/img/', $request->file('image'));
+        Storage::put('public/img/', $request->file('img'));
         $store->title= $request->title;
         $store->text= $request->text;
         $store->auteur_id= $request->auteur_id;
-        $store->image= $request->image;
+        $store->image = $request->file('img')->hashName();
         $store->save();
         return redirect('/')->with('succes', "felicitation vous avez ajouter un membre" );
     }
@@ -87,15 +87,21 @@ class BigController extends Controller
      */
     public function update(Request $request, Big $big)
     {
-        Storage::delete('public//img/'.$big->image);
+        $request->validate([
+            'title'=>'required',
+            'text'=>'required',
+            'auteur_id'=>'required',
+            'image'=>'required',
+        ]);
+        Storage::delete('public/img/'.$big->image);
         $big->delete();
+        Storage::Put('public/img/', $request->file('image'));
         $big->title= $request->title;
         $big->text = $request->text;
         $big->auteur_id = $request->auteur_id;
         $big->image = $request->file('image')->hashName();
-        Storage::Put('public/img/', $request->file('image'));
         $big->save();
-        return redirect('/');
+        return redirect('/')->with('succes', "felicitation vous avez ajouter un membre" );
     }
 
     /**

@@ -16,8 +16,19 @@ class BigFactory extends Factory
      */
     public function definition()
     {
+        $bg = 
+        [
+            '5tC0C1oAk2U8IoBPkxq6nUeOAxjtlt6OD52hG2rK.jpg',
+            'C7KrXPluTSvSl6Qxc7Qt2W8kUGZu4SVXzoV0mgDN.jpg',
+            'GAaw51yqZyNCfGZoCELAiVxSQD3CnKD2iqeY4oIv.jpg',
+            'Nez7AyoS4bd1quXMxrpXlmKYtbLusRaKINazCAlV.png',
+            'public\storage\img\X3AHBsM9detskNpdgl5ZNg01q6pFY72vvFRGLmom.jpg'
+        ];
         return [
-            //
+            "title"=> $this->faker->title(),
+            "text"=> $this->faker->text(),
+            "auteur_id"=> $this->faker->numberBetween(1,3),
+            "image"=>$bg[rand(1, count($bg)-1)],
         ];
     }
 }

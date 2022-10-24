@@ -87,15 +87,21 @@ class LittleController extends Controller
      */
     public function update(Request $request, Little $little)
     {
+        $request->validate([
+            'title'=>'required',
+            'text'=>'required',
+            'auteur_id'=>'required',
+            'image'=>'required',
+        ]);
         Storage::delete('public/img/'.$little->image);
         $little->delete();
+        Storage::Put('public/img/',$request->file('image'));
         $little->title= $request->title;
         $little->text = $request->text;
         $little->auteur_id = $request->auteur_id;
         $little->image = $request->file('image')->hashName();
-        Storage::Put('public/img/', $request->file('image'));
         $little->save();
-        return redirect('/');
+        return redirect('/')->with('succes', "felicitation vous avez ajouter un membre" );
     }
 
     /**
