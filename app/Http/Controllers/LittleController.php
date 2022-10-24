@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auteur;
 use App\Models\Little;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -49,7 +50,7 @@ class LittleController extends Controller
         $store->title= $request->title;
         $store->text= $request->text;
         $store->auteur_id= $request->auteur_id;
-        $store->image= $request->image;
+        $store->image = $request->file('image')->hashName();
         $store->save();
         return redirect('/')->with('succes', "felicitation vous avez ajouter un membre" );
     }
@@ -73,7 +74,8 @@ class LittleController extends Controller
      */
     public function edit(Little $little)
     {
-        return view('pages.little.edit', compact('little'));
+        $auteurs = Auteur::all();
+        return view('pages.little.edit', compact('little', 'auteurs'));
     }
 
     /**
@@ -107,7 +109,7 @@ class LittleController extends Controller
         Storage::delete('public/img/'.$little->image);
         $little->delete();
 
-        return redirect()->back();
+        return redirect('/');
     }
 
     public function download(Little $little)

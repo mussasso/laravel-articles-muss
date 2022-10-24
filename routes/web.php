@@ -3,6 +3,9 @@
 use App\Http\Controllers\AuteurController;
 use App\Http\Controllers\BigController;
 use App\Http\Controllers\LittleController;
+use App\Models\Auteur;
+use App\Models\Big;
+use App\Models\Little;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +20,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $littles= Little::all();
+    $bigs= Big::all();
+    $auteurs= Auteur::all();
+    return view('welcome' , compact('littles','bigs', 'auteurs'));
 });
-Route::resource('/Auteur', AuteurController::class);
-Route::resource('/Big', BigController::class);
-Route::resource('/Little', LittleController::class);
+Route::resource('/auteur', AuteurController::class);
+Route::resource('/big', BigController::class);
+Route::resource('/little', LittleController::class);
 

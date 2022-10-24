@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Auteur;
 use App\Models\Big;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -73,7 +74,8 @@ class BigController extends Controller
      */
     public function edit(Big $big)
     {
-        return view('pages.big.edit', compact('big'));
+        $auteurs= Auteur::all();
+        return view('pages.big.edit', compact('big', 'auteurs'));
     }
 
     /**
@@ -85,7 +87,7 @@ class BigController extends Controller
      */
     public function update(Request $request, Big $big)
     {
-        Storage::delete('public/img/'.$big->image);
+        Storage::delete('public//img/'.$big->image);
         $big->delete();
         $big->title= $request->title;
         $big->text = $request->text;
@@ -107,7 +109,7 @@ class BigController extends Controller
         Storage::delete('public/img/'.$big->image);
         $big->delete();
 
-        return redirect()->back();
+        return redirect('/');
     }
     public function download(Big $big)
     {
