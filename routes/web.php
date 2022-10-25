@@ -31,6 +31,24 @@ Route::get('/backoffice', function () {
     $auteurs= Auteur::all();
     return view('pages.backoffice' , compact('littles','bigs', 'auteurs'));
 });
+Route::get('/backoffice/auteur', function () {
+    $littles= Little::all();
+    $bigs= Big::all();
+    $auteurs= Auteur::all();
+    return view('pages.auteur.form' , compact('littles','bigs', 'auteurs'));
+});
+Route::get('/backoffice/big', function () {
+    $littles= Little::all();
+    $bigs= Big::all();
+    $auteurs= Auteur::all();
+    return view('pages.big.form' , compact('littles','bigs', 'auteurs'));
+});
+Route::get('/backoffice/little', function () {
+    $littles= Little::all();
+    $bigs= Big::all();
+    $auteurs= Auteur::all();
+    return view('pages.little.form' , compact('littles','bigs', 'auteurs'));
+});
 Route::resource('/auteur', AuteurController::class);
 Route::resource('/big', BigController::class);
 Route::resource('/little', LittleController::class);
